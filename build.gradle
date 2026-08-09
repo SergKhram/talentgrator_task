@@ -1,0 +1,50 @@
+plugins {
+    id 'java'
+    alias libs.plugins.allure
+}
+
+group = 'org.testslotegrator'
+version = '1.0.0'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation libs.rest.assured
+    implementation libs.jackson.databind
+    implementation libs.commons.lang3
+    implementation libs.logback.classic
+    implementation libs.allure.rest.assured
+
+    compileOnly libs.lombok
+    annotationProcessor libs.lombok
+    testCompileOnly libs.lombok
+    testAnnotationProcessor libs.lombok
+
+    testImplementation libs.junit.jupiter
+    testImplementation libs.assertj.core
+    testRuntimeOnly libs.junit.platform.launcher
+}
+
+test {
+    useJUnitPlatform()
+
+    project.properties.each { key, value ->
+        if (value != null && !key.startsWith("org.gradle") && !key.startsWith("gradle")) {
+            systemProperty key, value.toString()
+        }
+    }
+}
+
+def allureVersion = libs.versions.allure.java.get()
+
+allure {
+    version = allureVersion
+}

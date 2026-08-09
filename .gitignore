@@ -1,0 +1,39 @@
+### IntelliJ IDEA ###
+.idea*
+*.iws
+*.iml
+*.ipr
+.idea/
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### Gradle ###
+build/
+.gradle/
+
+### Логи ###
+logs/
+
+### Отчёты Allure ###
+.allure/
+allure-results/
+
+### Mac OS ###
+.DS_Store
+
+### Прочее ###
+*.log
